@@ -1,4 +1,4 @@
-from .unit import Unit
+from unit import Unit
 
 class UnitConverter:
     def __init__(self, parser_default_unit, dest_unit=None):
