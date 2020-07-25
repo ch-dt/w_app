@@ -33,7 +33,7 @@ args = argparser.parse_args()
 
 _validate_forecast_args(args)
 
-cls = parsers[arg.parser]
+cls = parsers[args.parser]
 parser = cls()
 results = parser.run(args)
 
