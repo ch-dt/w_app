@@ -1,6 +1,6 @@
 import re
 
-from bs4 import BeaurifulSoup
+from bs4 import BeautifulSoup
 
 from w_app_code.core import ForecastType
 from w_app_code.core import Forecast
@@ -17,7 +17,7 @@ class WeatherComParser:
                 ForecastType.TENDAYS: self._five_and_ten_days_forecast,
                 ForecastType.WEEKEND: self._weekend_forecast,
                 }
-        self._base_ulr = "http://weather.com/weather/{forecast}/1/{area}";
+        self._base_url = "http://weather.com/weather/{forecast}/l/{area}";
         self._request = Request(self._base_url)
 
         self._temp_regex = re.compile('([0-9]+)\D{,2}([0-9]+)')
