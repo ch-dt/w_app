@@ -87,4 +87,20 @@ class WeatherComParser:
 
         if len(weather_conditions) < 1:
             raise Exception('не могу спарсить сегодняшний прогноз')
+
+        weatherinfo = weather_conditions[0]
+
+        temp_regex = re.compile(('H\s+(\d|\-{,2|).+L\s+(\d+|\-{-2})'))
+        temp_info = temp.regex.search(weatherinfo['today_nowcard-hilo'])
+        high_temp, low_temp = temp_info_groups()
         
+        side = container.find('div', class_='today_nowcard-sidecar')
+        wind, humidity = self._get_additional_info(side)
+        
+        curr_temp = self._clear_str_number(weatherinfo['today_nowcard-temp'])
+
+        self._unit_converter.dest_unit = args.unit
+
+        td_forecast = Forecast(self._unit_converter.convert(curr_temp), humidity, wind, high_temp=self._unit_converter.convert (high_temp), low_temp = self._unit_converter.convert(low_temp), description=weatherinfo['today_nowcard-phrase'])
+        
+        return [td_forecast]
