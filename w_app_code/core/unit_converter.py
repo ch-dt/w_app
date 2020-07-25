@@ -1,4 +1,4 @@
-from unit import Unit
+from .unit import Unit
 
 class UnitConverter:
     def __init__(self, parser_default_unit, dest_unit=None):
@@ -21,7 +21,7 @@ class UnitConverter:
         def convert(self, temp):
             try:
                 temperature = float(temp)
-            expect ValueError:
+            except ValueError:
                 return 0
 
             if (self.dest_unit == self._parser_default_unit or self.dest_unit is None):

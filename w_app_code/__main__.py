@@ -1,9 +1,9 @@
 import sys
 from argparse import ArgumentParser
 
-from weatherterm.core import parser_loader
-from weatherterm.core import ForecastType
-from weatherterm.core import Unit
+from w_app_code.core import parser_loader
+from w_app_code.core import ForecastType
+from w_app_code.core import Unit
 
 def _validate_forecast_args(args):
     if args.forecast_option is None:
@@ -17,7 +17,7 @@ argparser = ArgumentParser(prog='weatherterm', description = "Прогноз с 
 
 required = argparser.add_argument_group('required arguments')
 
-required.add_argument('-p', '--parser', choices=parsers.keys(), required=True, dest='parser', help('Уточни, какой парсер использовать,чтобы узнать прогноз'))
+required.add_argument('-p', '--parser', choices=parsers.keys(), required=True, dest='parser', help=('Уточни, какой парсер использовать,чтобы узнать прогноз'))
 
 unit_values = [name.title() for name, value in Unit.__members__.items()]
 
